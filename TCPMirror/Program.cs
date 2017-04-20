@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using IPeople.Tools.ReactiveExtensions;
 using TCP_Com;
 
 
@@ -10,22 +11,22 @@ namespace TCPMirror
 {
     class Program
     {
+        private static TcpMirrorSetting settings;
 
-        static Socket ss;
-        static IPEndPoint ipe;
         static readonly Action<Socket> cb = t =>
         {
+            Socket ss = new Socket(settings.DestinationEndpoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             if (!ss.Connected)
-                ss.Connect(ipe);
+                ss.Connect(settings.DestinationEndpoint);
             new CallbackSock(t, ss).DoCallback();
         };
 
         static void Main(string[] args)
         {
-            IPeople.Tools.ReactiveExtensions.Logwriter.Initialize();
-            var settings = new TcpMirrorSetting();
-            ipe = settings.DestinationEndpoint;
-            ss = new Socket(settings.DestinationEndpoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            Logwriter.Initialize();
+            settings = new TcpMirrorSetting(true);
+            
+            
             SocketServer.StartListening(settings.LocalEndpoint, cb, "log.txt");
             Console.ReadKey();
         }
@@ -34,62 +35,93 @@ namespace TCPMirror
 
         private class CallbackSock
         {
-            private readonly Socket s;
-            private readonly Socket s_tar;
+            private Socket s;
+            private Socket s_tar;
             private bool DoExit;
 
             public CallbackSock(Socket s, Socket s_tar)
             {
-
                 this.s = s;
                 this.s_tar = s_tar;
             }
 
             public void DoCallback()
             {
-                new Thread(RCV).Start();
-                new Thread(SND).Start();
-                while (!DoExit)
-                    Thread.Sleep(250);
+                using (Socket s_d = this.s)
+                using (Socket s_tar_d = this.s_tar)
+                using (var bqSS = new BinaryQueue(true))
+                using (var bqS = new BinaryQueue(true))
+                {
+                    try
+
+                    {
+                        new Thread(() => { rcvLoop(s_d, bqS, ref DoExit); }).Start();
+                        new Thread(() => { rcvLoop(s_tar_d, bqSS, ref DoExit); }).Start();
+                        new Thread(() => { sndLoop(s_tar_d, bqS, ref DoExit); }).Start();
+                        new Thread(() => { sndLoop(s_d, bqSS, ref DoExit); }).Start();
+
+                        while (!DoExit)
+                            Thread.Sleep(250);
+                    }
+                    catch
+                    {
+                        DoExit = true;
+                    }
+                }
             }
 
-            private void RCV()
+
+            void rcvLoop(Socket socI,  BinaryQueue bq, ref bool DoExit)
             {
                 try
                 {
-                    while (true)
-                        using (NetworkStream n = new NetworkStream(s))
-                        using (NetworkStream n_tar = new NetworkStream(s_tar))
-                            if (n.DataAvailable && n.CanRead)
-                            {
-                                    n.CopyTo(n_tar);
-                                    n.Flush();
-                                    n_tar.Flush();
-                            }
-                }
-                catch{DoExit = true;}
-            }
 
-            private void SND()
-            {
-                try
-                {
-                    while (true)
-                        using (NetworkStream n = new NetworkStream(s))
-                        using (NetworkStream n_tar = new NetworkStream(s_tar))
-                            if (n_tar.DataAvailable && n_tar.CanRead)
-                            {
-                                    n_tar.CopyTo(n);
-                                    n.Flush();
-                                    n_tar.Flush();
-                            }
+                    using (var stream = new NetworkStream(socI))
+                    using (var bstream = new BufferedStream(stream))
+                        bstream.CopyTo(bq);
                 }
-                catch
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                   // throw;
+                }
+                finally
                 {
                     DoExit = true;
                 }
             }
+            void sndLoop(Socket socO,  BinaryQueue bq, ref bool DoExit)
+            {
+                try
+                {
+                    using (var stream = new NetworkStream(socO))
+                    using (var bstream = new BufferedStream(stream))
+                        while (true)
+                            if (bq.HowFarBehind > 0)
+                            {
+                                byte[] b = bq.GetBlock();
+                                bstream.Write(b, 0, b.Length);
+                                bstream.Flush();
+                            }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    // throw;
+                }
+                finally
+                {
+                    DoExit = true;
+                }
+            }
+
         }
+
+
+
+
+
+
         internal class TcpMirrorSetting
         {
             public TcpMirrorSetting(int listenPort, string targetIp, int targetPort)
