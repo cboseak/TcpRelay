@@ -349,3 +349,85 @@
 [2017-04-20 12:58:01.3169][Debug] StartAccept method
 [2017-04-20 12:58:01.3169][Debug] Remote endpoint = 192.168.42.126: 58650. client(s) connected = 1
 [2017-04-20 12:58:16.0997][Debug] 8080 disconnected. 0 client(s) connected.
+[2017-04-21 09:04:49.0719][Debug] SocketListener constructor
+[2017-04-21 09:04:49.0969][Debug] Init method
+[2017-04-21 09:04:49.0969][Debug] Starting creation of accept SocketAsyncEventArgs pool:
+[2017-04-21 09:04:49.0984][Debug] Starting creation of receive/send SocketAsyncEventArgs pool
+[2017-04-21 09:04:49.0984][Debug] StartListen method. Before Listen operation is started.
+[2017-04-21 09:04:49.1229][Debug] StartListen method Listen operation was just started.
+[2017-04-21 09:04:49.1229][Debug] 
+
+*************************
+** Server is listening [51551] **
+*************************
+
+
+[2017-04-21 09:04:49.1229][Debug] StartAccept method
+[2017-04-21 09:05:52.2869][Debug] SocketListener constructor
+[2017-04-21 09:05:52.2869][Debug] Init method
+[2017-04-21 09:05:52.2869][Debug] Starting creation of accept SocketAsyncEventArgs pool:
+[2017-04-21 09:05:52.2869][Debug] Starting creation of receive/send SocketAsyncEventArgs pool
+[2017-04-21 09:05:52.3069][Debug] StartListen method. Before Listen operation is started.
+[2017-04-21 09:05:52.3280][Debug] StartListen method Listen operation was just started.
+[2017-04-21 09:05:52.3280][Debug] 
+
+*************************
+** Server is listening [8080] **
+*************************
+
+
+[2017-04-21 09:05:52.3280][Debug] StartAccept method
+[2017-04-21 09:07:12.8485][Debug] ProcessAccept, accept id 100010000
+[2017-04-21 09:07:12.8485][Debug] LoopToStartAccept
+[2017-04-21 09:07:12.8485][Debug] StartAccept method
+[2017-04-21 09:07:12.8485][Debug] Remote endpoint = 192.168.42.126: 54775. client(s) connected = 1
+[2017-04-21 09:07:13.4580][Debug] ProcessAccept, accept id 99910000
+[2017-04-21 09:07:13.4580][Debug] LoopToStartAccept
+[2017-04-21 09:07:13.4580][Debug] StartAccept method
+[2017-04-21 09:07:13.4580][Debug] Remote endpoint = 192.168.42.126: 54778. client(s) connected = 2
+[2017-04-21 09:07:13.7585][Debug] ProcessAccept, accept id 100010000
+[2017-04-21 09:07:13.7585][Debug] LoopToStartAccept
+[2017-04-21 09:07:13.7585][Debug] StartAccept method
+[2017-04-21 09:07:13.7585][Debug] Remote endpoint = 192.168.42.126: 54780. client(s) connected = 3
+[2017-04-21 09:07:14.2215][Debug] ProcessAccept, accept id 99910000
+[2017-04-21 09:07:14.4050][Debug] LoopToStartAccept
+[2017-04-21 09:07:14.4050][Debug] StartAccept method
+[2017-04-21 09:07:14.4050][Debug] Remote endpoint = 192.168.42.126: 54782. client(s) connected = 4
+[2017-04-21 09:07:14.7451][Debug] ProcessAccept, accept id 100010000
+[2017-04-21 09:07:15.0596][Debug] LoopToStartAccept
+[2017-04-21 09:07:15.0766][Debug] StartAccept method
+[2017-04-21 09:07:15.2046][Debug] ProcessAccept, accept id 99910000
+[2017-04-21 09:07:15.2046][Debug] Remote endpoint = 192.168.42.126: 54783. client(s) connected = 6
+[2017-04-21 09:07:15.2471][Debug] LoopToStartAccept
+[2017-04-21 09:07:15.8736][Debug] StartAccept method
+[2017-04-21 09:07:16.1241][Debug] Remote endpoint = 192.168.42.126: 54784. client(s) connected = 6
+[2017-04-21 09:07:16.4791][Debug] ProcessAccept, accept id 100010000
+[2017-04-21 09:07:16.8016][Debug] LoopToStartAccept
+[2017-04-21 09:07:16.8706][Debug] StartAccept method
+[2017-04-21 09:07:18.3316][Debug] Remote endpoint = 192.168.42.126: 54785. client(s) connected = 7
+[2017-04-21 09:07:18.3316][Debug] ProcessAccept, accept id 99910000
+[2017-04-21 09:07:18.6702][Debug] LoopToStartAccept
+[2017-04-21 09:07:19.2542][Debug] StartAccept method
+[2017-04-21 09:07:19.2632][Debug] Remote endpoint = 192.168.42.126: 54787. client(s) connected = 8
+[2017-04-21 09:08:57.4865][Debug] 8080 disconnected. 7 client(s) connected.
+[2017-04-21 09:08:58.5461][Debug] 8080 disconnected. 6 client(s) connected.
+[2017-04-21 09:08:59.6436][Debug] 8080 disconnected. 5 client(s) connected.
+[2017-04-21 09:08:59.6911][Debug] 8080 disconnected. 4 client(s) connected.
+[2017-04-21 09:09:03.9571][Debug] 8080 disconnected. 2 client(s) connected.
+[2017-04-21 09:09:04.1431][Debug] 8080 disconnected. 1 client(s) connected.
+[2017-04-21 09:08:59.7441][Debug] 8080 disconnected. 3 client(s) connected.
+[2017-04-21 09:09:46.5647][Debug] 8080 disconnected. 0 client(s) connected.
+[2017-04-21 10:30:53.2288][Debug] SocketListener constructor
+[2017-04-21 10:30:53.2588][Debug] Init method
+[2017-04-21 10:30:53.2598][Debug] Starting creation of accept SocketAsyncEventArgs pool:
+[2017-04-21 10:30:53.2598][Debug] Starting creation of receive/send SocketAsyncEventArgs pool
+[2017-04-21 10:30:53.2598][Debug] StartListen method. Before Listen operation is started.
+[2017-04-21 10:30:53.2858][Debug] StartListen method Listen operation was just started.
+[2017-04-21 10:30:53.2858][Debug] 
+
+*************************
+** Server is listening [8080] **
+*************************
+
+
+[2017-04-21 10:30:53.2858][Debug] StartAccept method

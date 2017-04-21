@@ -1,0 +1,25 @@
+﻿Installing assembly 'C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.exe'.
+Affected parameters are:
+   test install = 
+   assemblypath = C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.exe
+   logfile = C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.InstallLog
+Installing service TcpService...
+Service TcpService has been successfully installed.
+Creating EventLog source TcpService in log Application...
+See the contents of the log file for the C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.exe assembly's progress.
+The file is located at C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.InstallLog.
+Committing assembly 'C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   test install = 
+   assemblypath = C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.exe
+   logfile = C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.InstallLog
+Uninstalling assembly 'C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.exe'.
+Affected parameters are:
+   assemblypath = C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.exe
+   logfile = C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.InstallLog
+   test uninstall = 
+Removing EventLog source TcpService.
+Service TcpService is being removed from the system...
+Service TcpService was successfully removed from the system.
+Attempt to stop service TcpService.

@@ -96,6 +96,6 @@ C:\CORE\TcpMirror\TCPMirror\TCPMirror\bin\Debug\de\DevExpress.Office.v13.1.Core.
 C:\CORE\TcpMirror\TCPMirror\TCPMirror\bin\Debug\es\DevExpress.Office.v13.1.Core.resources.dll
 C:\CORE\TcpMirror\TCPMirror\TCPMirror\bin\Debug\ja\DevExpress.Office.v13.1.Core.resources.dll
 C:\CORE\TcpMirror\TCPMirror\TCPMirror\bin\Debug\ru\DevExpress.Office.v13.1.Core.resources.dll
-C:\CORE\TcpMirror\TCPMirror\TCPMirror\obj\Debug\TCPMirror.csprojResolveAssemblyReference.cache
 C:\CORE\TcpMirror\TCPMirror\TCPMirror\obj\Debug\TCPMirror.exe
 C:\CORE\TcpMirror\TCPMirror\TCPMirror\obj\Debug\TCPMirror.pdb
+C:\CORE\TcpMirror\TCPMirror\TCPMirror\obj\Debug\TCPMirror.csprojResolveAssemblyReference.cache

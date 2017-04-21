@@ -1,0 +1,11 @@
+C:\CORE\TcpMirror\TCPMirror\TcpService\obj\Debug\TcpService.vbprojResolveAssemblyReference.cache
+C:\CORE\TcpMirror\TCPMirror\TcpService\obj\Debug\TcpService.Resources.resources
+C:\CORE\TcpMirror\TCPMirror\TcpService\obj\Debug\TcpService.ServiceMessageBox.resources
+C:\CORE\TcpMirror\TCPMirror\TcpService\obj\Debug\TcpService.vbproj.GenerateResource.Cache
+C:\CORE\TcpMirror\TCPMirror\TcpService\obj\Debug\TcpService.exe
+C:\CORE\TcpMirror\TCPMirror\TcpService\obj\Debug\TcpService.xml
+C:\CORE\TcpMirror\TCPMirror\TcpService\obj\Debug\TcpService.pdb
+C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.exe.config
+C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.exe
+C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.pdb
+C:\CORE\TcpMirror\TCPMirror\Server\Bin\Debug\TcpService.xml

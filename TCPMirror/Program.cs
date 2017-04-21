@@ -9,7 +9,7 @@ using TCP_Com;
 
 namespace TCPMirror
 {
-    class Program
+    public class Program
     {
         private static TcpMirrorSetting settings;
 
@@ -21,16 +21,20 @@ namespace TCPMirror
             new CallbackSock(t, ss).DoCallback();
         };
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Logwriter.Initialize();
-            settings = new TcpMirrorSetting(true);
-            
-            
-            SocketServer.StartListening(settings.LocalEndpoint, cb, "log.txt");
-            Console.ReadKey();
+            settings = new TcpMirrorSetting(); 
+            SocketServer.StartListening(settings.LocalEndpoint, cb, Path.Combine(Generics._AssemblyDir, "log.txt"));
+            if(settings.DestinationEndpoint.Port == 8081)
+                Console.ReadKey();
         }
-
+        public static void Start()
+        {
+            Logwriter.Initialize();
+            settings = new TcpMirrorSetting();
+            SocketServer.StartListening(settings.LocalEndpoint, cb, Path.Combine(Generics._AssemblyDir, "log.txt"));
+        }
 
 
         private class CallbackSock
@@ -82,7 +86,7 @@ namespace TCPMirror
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    //Console.WriteLine("Disconnected");
                    // throw;
                 }
                 finally
@@ -97,16 +101,16 @@ namespace TCPMirror
                     using (var stream = new NetworkStream(socO))
                     using (var bstream = new BufferedStream(stream))
                         while (true)
-                            if (bq.HowFarBehind > 0)
-                            {
-                                byte[] b = bq.GetBlock();
-                                bstream.Write(b, 0, b.Length);
-                                bstream.Flush();
-                            }
+                        {
+                            var b = bq.GetBlock();
+                            if (b.Length <= 0){ Thread.Sleep(1);continue;}
+                            bstream.Write(b, 0, b.Length);
+                            bstream.Flush(); 
+                        }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    //Console.WriteLine("Disconnected");
                     // throw;
                 }
                 finally
@@ -137,7 +141,7 @@ namespace TCPMirror
             public TcpMirrorSetting(bool debug)
             {
                 if (!debug)
-                    ConfigWithArr(File.ReadAllText("mirror.ini").Split('|'));
+                    ConfigWithArr(File.ReadAllText(Path.Combine(Generics._AssemblyDir, "mirror.ini")).Split('|'));
             }
             internal void ConfigWithArr(string[] arr)
             {
@@ -148,7 +152,7 @@ namespace TCPMirror
 
             public TcpMirrorSetting()
             {
-                try { ConfigWithArr(File.ReadAllText("mirror.ini").Split('|')); }
+                try { ConfigWithArr(File.ReadAllText(Path.Combine(Generics._AssemblyDir, "mirror.ini")).Split('|')); }
                 catch { }
             }
             IPEndPoint d_ipe;
